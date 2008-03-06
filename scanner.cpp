@@ -1,9 +1,14 @@
 #include "scanner.h"
+#include "rpal_constants.h"
+using namespace std;
 
-scanner::scanner(char* name)
+
+Scanner::Scanner(string name)
 {
+    //objToken = new Token();
+    ptrToken = (Token*)malloc(sizeof(Token));
 
-    filestream.open(name, ios::in|ios::ate);
+    filestream.open(name.c_str(), ios::in|ios::ate);
 
     if (!filestream)
     {
@@ -25,25 +30,28 @@ scanner::scanner(char* name)
 
 }
 
-scanner::~scanner()
+Scanner::~Scanner()
 {
 
     delete fileptr;
 
 }
 
-bool scanner::isEOF()
+bool Scanner::isEOF()
 {
     return (index < filesize) ? false : true;
 }
 
-string scanner::getnexttoken()
+Token* Scanner::getNextToken()
 {
     string currtoken = "";
 
     if (index >= filesize)
     {
-        return "";
+        ptrToken->sNextToken = "";
+        ptrToken->eTokenType = END_OF_FILE;
+
+        return ptrToken;
     }
 
     while (index < filesize)
@@ -54,9 +62,10 @@ string scanner::getnexttoken()
         /*
             Check for identifier tokens
             Identifier -> Letter (Letter | Digit | ’_’)* => ’<IDENTIFIER>’;
-            Notes: ge, le which are keywords will be detected as an ID in the scanner. Parser should work on it
+            Notes: ge, le which are keywords will be detected as an ID in the Scanner. Parser should work on it
         */
 
+        //suspect: change all ifs to if-elseifs ?
         if (isalpha(currchar))
         {
             do
@@ -65,7 +74,10 @@ string scanner::getnexttoken()
                 index++;
             } while ( !isEOF() && (fileptr[index] == '_') || isalpha(fileptr[index]) || isdigit(fileptr[index]) );
 
-            return currtoken;
+            ptrToken->sNextToken = currtoken;
+            ptrToken->eTokenType = IDENTIFIER;
+
+            return ptrToken;
         }
 
         /*
@@ -73,7 +85,7 @@ string scanner::getnexttoken()
             Integer ->Digit+ =>’<INTEGER>’;
         */
 
-        if (isdigit(currchar))
+        else if (isdigit(currchar))
         {
             do
             {
@@ -81,7 +93,10 @@ string scanner::getnexttoken()
                 index++;
             } while ( !isEOF() && isdigit(fileptr[index]) );
 
-            return currtoken;
+            ptrToken->sNextToken = currtoken;
+            ptrToken->eTokenType = INTEGER;
+
+            return ptrToken;
         }
 
 
@@ -90,7 +105,7 @@ string scanner::getnexttoken()
             Operator -> Operator_symbol+ => ’<OPERATOR>’;
         */
 
-        if (isoperator(currchar))
+        else if (isoperator(currchar) && !(currchar == '/' && fileptr[index+1] == '/'))
         {
             do
             {
@@ -98,13 +113,17 @@ string scanner::getnexttoken()
                 index++;
             } while ( !isEOF() && isoperator(fileptr[index]) );
 
-            return currtoken;
+            ptrToken->sNextToken = currtoken;
+            ptrToken->eTokenType = OPERATOR;
+
+            return ptrToken;
+
         }
 
         /*
             Extract string literals
         */
-        if (currchar == '\'')
+        else if (currchar == '\'')
         {
             index++;
             do
@@ -114,7 +133,10 @@ string scanner::getnexttoken()
 
             currtoken += currchar; //suspect : what about the last char in the string? and why is currchar assigned to currtoken
 
-            return currtoken;
+            ptrToken->sNextToken = currtoken;
+            ptrToken->eTokenType = STRING;
+
+            return ptrToken;
         }
 
         /*
@@ -122,46 +144,51 @@ string scanner::getnexttoken()
             Spaces -> ( ’ ’ | ht | Eol )+ => ’<DELETE>’;
         */
 
-        if( isspace(currchar) || currchar == '\t' || currchar == '\n' ) //suspect : what about End of Line. isn't is \n\r ?
+        else if( isspace(currchar) || currchar == '\t' || currchar == '\n' ) //suspect : what about End of Line. isn't is \n\r ?
         {
             index++;
         }
 
         /*
-            If a comment (\\) is found, skip the characters
+            If a comment (//) is found, skip the characters
             until a end of line character is encountered.
         */
 
-        if(currchar=='\\')
+        else if(currchar=='/' && fileptr[++index] == '/')
         {
-            if(fileptr[index+1] == '\\')
-            {
-                while( (fileptr[++index] != '\n') );
-            }
-            else
-            {
-                currtoken += currchar;
-                return currtoken;
-            }
+            while( (fileptr[++index] != '\n') );//suspect : what about End of Line. isn't is \n\r ?
         }
 
         /*
             Extract punctuations
         */
 
-        if ( ispuncuation(currchar) )
+        else if ( ispuncuation(currchar) )
         {
             currtoken += currchar;
             index++;
-            return currtoken;
+
+            ptrToken->sNextToken = currtoken;
+            ptrToken->eTokenType = PUNCTUATION;
+
+            return ptrToken;
+
+        }
+
+        else
+        {
+           return NULL; //Handles illegal tokens. eg: starting with _, | etc.
         }
 
     }
 
-    return "";
+    ptrToken->sNextToken = "";
+    ptrToken->eTokenType = UNDEFINED;
+
+    return ptrToken;
 }
 
-bool scanner::isoperator(int c)
+bool Scanner::isoperator(int c)
 {
     if (c=='+' || c=='-' || c=='*' || c=='<' || c=='>' || c=='*' || c=='&' || c=='.'
     || c=='@' || c=='/' || c==':' || c=='=' || c=='~' || c=='|' || c=='$' || c=='!'
@@ -173,7 +200,7 @@ bool scanner::isoperator(int c)
 
 }
 
-bool scanner::ispuncuation(int c)
+bool Scanner::ispuncuation(int c)
 {
 
 

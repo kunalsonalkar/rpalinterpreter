@@ -1,5 +1,6 @@
 #include "stack.h"
 #include "binarytree.h"
+#include "rpal_utils.h"
 
 Stack::Stack()
 {
@@ -66,20 +67,31 @@ bool Stack::clearAll()
 
 bool Stack::buildTree(string dat, int childCount)
 {
-    BTreeNode *tmpRoot = new BTreeNode(dat, pop(), NULL);
-    //tmpRoot-> data = dat;
-    //tmpRoot-> right = NULL;
-    //tmpRoot->left = st->pop();
 
-    BTreeNode *currNode = tmpRoot->getLeft();
-
-    while  ((--childCount) > 0 )
+    try
     {
-        currNode->setRight(pop());
-        currNode->setLeft(NULL);
+        BTreeNode *tmpRoot = new BTreeNode(dat, pop(), NULL);
+        //tmpRoot-> data = dat;
+        //tmpRoot-> right = NULL;
+        //tmpRoot->left = st->pop();
 
-        currNode = currNode->getRight();
+        BTreeNode *currNode = tmpRoot->getLeft();
+
+        while  ((--childCount) > 0 )
+        {
+            currNode->setRight(pop());
+            currNode->setLeft(NULL);
+
+            currNode = currNode->getRight();
+        }
+
+        push(tmpRoot);
+        return true;
+    }
+    catch(exception& e)
+    {
+            Utils::writeExceptionToLog("Stack::buildTree",e.what());
+            return false;
     }
 
-    push(tmpRoot);
 }

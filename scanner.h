@@ -7,11 +7,17 @@
 
 using namespace std;
 
-class scanner
+struct Token{
+    string sNextToken;
+    int eTokenType;
+};
+
+class Scanner
 {
 
     private:
         char* fileptr;
+        Token* ptrToken;
         ifstream filestream;
         int index, filesize;
         bool isoperator(int c);
@@ -19,9 +25,9 @@ class scanner
         bool isEOF();
 
     public:
-        scanner(char* name);
-        ~scanner();
-        string getnexttoken();
+        Scanner(string name);
+        ~Scanner();
+        Token* getNextToken();
 
 };
 
