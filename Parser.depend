@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1193987726 source:c:\users\balaji\documents\spring08\plp\project\parser\main.cpp
+	<iostream>
+
+1204767392 source:c:\users\balaji\documents\spring08\plp\project\parser\scanner.cpp
+	"scanner.h"
+
+1204767415 c:\users\balaji\documents\spring08\plp\project\parser\scanner.h
+	<iostream>
+	<fstream>
+	<cctype>
+
+1204767232 source:c:\users\balaji\documents\spring08\plp\project\parser\stack.cpp
+	"stack.h"
+	"binarytree.h"
+
+1204767225 c:\users\balaji\documents\spring08\plp\project\parser\stack.h
+	"binarytree.h"
+
+1204767238 c:\users\balaji\documents\spring08\plp\project\parser\binarytree.h
+	<string>
+	<iostream>
+
+1204767244 source:c:\users\balaji\documents\spring08\plp\project\parser\binarytree.cpp
+	"binarytree.h"
+
