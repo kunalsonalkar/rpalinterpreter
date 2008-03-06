@@ -119,9 +119,10 @@ string scanner::getnexttoken()
 
         /*
             Bypass spaces and tabs
+            Spaces -> ( ’ ’ | ht | Eol )+ => ’<DELETE>’;
         */
 
-        if( isspace(currchar) || currchar == '\t' || currchar == '\n' )
+        if( isspace(currchar) || currchar == '\t' || currchar == '\n' ) //suspect : what about End of Line. isn't is \n\r ?
         {
             index++;
         }
