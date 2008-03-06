@@ -3,11 +3,13 @@
 
 #include "stack.h"
 #include "scanner.h"
+
 using namespace std;
 class Parser{
 
   private:
-        Stack oStack;
+        Stack* oStack;
+        Scanner* oScanner;
 
   public:
         //constructor

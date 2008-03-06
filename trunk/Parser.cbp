@@ -37,6 +37,9 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="parser.cpp" />
 		<Unit filename="parser.h" />
+		<Unit filename="rpal_constants.h" />
+		<Unit filename="rpal_utils.cpp" />
+		<Unit filename="rpal_utils.h" />
 		<Unit filename="scanner.cpp" />
 		<Unit filename="scanner.h" />
 		<Unit filename="stack.cpp" />

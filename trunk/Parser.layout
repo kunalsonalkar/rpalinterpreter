@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="binarytree.cpp" open="1" top="0" tabpos="4">
+	<File name="binarytree.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="191" topLine="48" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="117" topLine="0" />
 	</File>
-	<File name="parser.h" open="0" top="0" tabpos="0">
-		<Cursor position="430" topLine="4" />
+	<File name="parser.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="414" topLine="15" />
 	</File>
-	<File name="scanner.cpp" open="1" top="1" tabpos="5">
-		<Cursor position="2421" topLine="105" />
+	<File name="parser.h" open="1" top="0" tabpos="4">
+		<Cursor position="162" topLine="0" />
 	</File>
-	<File name="scanner.h" open="1" top="0" tabpos="6">
-		<Cursor position="337" topLine="1" />
+	<File name="scanner.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="109" topLine="0" />
 	</File>
-	<File name="stack.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="365" topLine="10" />
+	<File name="scanner.h" open="1" top="0" tabpos="3">
+		<Cursor position="337" topLine="5" />
 	</File>
-	<File name="stack.h" open="1" top="0" tabpos="3">
+	<File name="stack.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="stack.h" open="0" top="0" tabpos="3">
 		<Cursor position="304" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>
