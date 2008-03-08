@@ -7,8 +7,8 @@
 
 using namespace std;
 
-struct Token{
-    string sNextToken;
+typedef struct Token{
+    string sToken;
     int eTokenType;
 };
 

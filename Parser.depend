@@ -43,3 +43,49 @@
 	<iostream>
 	<fstream>
 
+1204788254 source:/media/DATA/UF/Courses/Programming Language Principles/Project/Parser/binarytree.cpp
+	"binarytree.h"
+
+1204788254 /media/DATA/UF/Courses/Programming Language Principles/Project/Parser/binarytree.h
+	<string>
+	<iostream>
+
+1204943060 source:/media/DATA/UF/Courses/Programming Language Principles/Project/Parser/main.cpp
+	<iostream>
+	"stack.h"
+
+1204788254 /media/DATA/UF/Courses/Programming Language Principles/Project/Parser/stack.h
+	"binarytree.h"
+
+1204827696 source:/media/DATA/UF/Courses/Programming Language Principles/Project/Parser/parser.cpp
+	"parser.h"
+	"rpal_constants.h"
+
+1204827696 /media/DATA/UF/Courses/Programming Language Principles/Project/Parser/parser.h
+	"stack.h"
+	"scanner.h"
+
+1204827696 /media/DATA/UF/Courses/Programming Language Principles/Project/Parser/scanner.h
+	<iostream>
+	<fstream>
+	<cctype>
+
+1204827696 /media/DATA/UF/Courses/Programming Language Principles/Project/Parser/rpal_constants.h
+
+1204827696 source:/media/DATA/UF/Courses/Programming Language Principles/Project/Parser/rpal_utils.cpp
+	"rpal_utils.h"
+	"rpal_constants.h"
+
+1204827696 /media/DATA/UF/Courses/Programming Language Principles/Project/Parser/rpal_utils.h
+	<iostream>
+	<fstream>
+
+1204827696 source:/media/DATA/UF/Courses/Programming Language Principles/Project/Parser/scanner.cpp
+	"scanner.h"
+	"rpal_constants.h"
+
+1204945893 source:/media/DATA/UF/Courses/Programming Language Principles/Project/Parser/stack.cpp
+	"stack.h"
+	"binarytree.h"
+	"rpal_utils.h"
+

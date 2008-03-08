@@ -3,13 +3,14 @@
 
 #include "stack.h"
 #include "scanner.h"
+#include "lookaheadbuffer.h"
 
 using namespace std;
 class Parser{
 
   private:
         Stack* oStack;
-        Scanner* oScanner;
+        LookAheadBuffer* oLookAhead;
 
   public:
         //constructor
@@ -18,6 +19,8 @@ class Parser{
 
         //destructor
         ~Parser();
+
+
 
         //Methods
 
@@ -56,7 +59,8 @@ class Parser{
         bool proc_Vb();
         bool proc_Vl();
 
-
+        bool Read(Token Token);
+        Token constructToken(string sToken, int eTokenType);
 };
 
 #endif // PARSER_H_INCLUDED
