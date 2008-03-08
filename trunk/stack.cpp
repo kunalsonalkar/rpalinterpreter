@@ -70,11 +70,8 @@ bool Stack::buildTree(string dat, int childCount)
 
     try
     {
-        BTreeNode *tmpRoot = new BTreeNode(dat, pop(), NULL);
-        //tmpRoot-> data = dat;
-        //tmpRoot-> right = NULL;
-        //tmpRoot->left = st->pop();
 
+        /*
         BTreeNode *currNode = tmpRoot->getLeft();
 
         while  ((--childCount) > 0 )
@@ -84,6 +81,22 @@ bool Stack::buildTree(string dat, int childCount)
 
             currNode = currNode->getRight();
         }
+        */
+
+        BTreeNode *currNode = pop();
+        //currNode->setLeft(NULL);
+        //currNode->setRight(NULL);
+
+        while  ((childCount--) > 1)
+        {
+            BTreeNode *tmpNode = pop();
+            //tmpNode->left = NULL;
+            tmpNode->setRight(currNode);
+
+            currNode = tmpNode;
+        }
+
+        BTreeNode *tmpRoot = new BTreeNode(dat,  currNode, NULL);
 
         push(tmpRoot);
         return true;

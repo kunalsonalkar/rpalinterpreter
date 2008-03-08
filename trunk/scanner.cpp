@@ -48,7 +48,7 @@ Token* Scanner::getNextToken()
 
     if (index >= filesize)
     {
-        ptrToken->sNextToken = "";
+        ptrToken->sToken = "";
         ptrToken->eTokenType = END_OF_FILE;
 
         return ptrToken;
@@ -74,7 +74,7 @@ Token* Scanner::getNextToken()
                 index++;
             } while ( !isEOF() && (fileptr[index] == '_') || isalpha(fileptr[index]) || isdigit(fileptr[index]) );
 
-            ptrToken->sNextToken = currtoken;
+            ptrToken->sToken = currtoken;
             ptrToken->eTokenType = IDENTIFIER;
 
             return ptrToken;
@@ -93,7 +93,7 @@ Token* Scanner::getNextToken()
                 index++;
             } while ( !isEOF() && isdigit(fileptr[index]) );
 
-            ptrToken->sNextToken = currtoken;
+            ptrToken->sToken = currtoken;
             ptrToken->eTokenType = INTEGER;
 
             return ptrToken;
@@ -113,7 +113,7 @@ Token* Scanner::getNextToken()
                 index++;
             } while ( !isEOF() && isoperator(fileptr[index]) );
 
-            ptrToken->sNextToken = currtoken;
+            ptrToken->sToken = currtoken;
             ptrToken->eTokenType = OPERATOR;
 
             return ptrToken;
@@ -133,7 +133,7 @@ Token* Scanner::getNextToken()
 
             currtoken += currchar; //suspect : what about the last char in the string? and why is currchar assigned to currtoken
 
-            ptrToken->sNextToken = currtoken;
+            ptrToken->sToken = currtoken;
             ptrToken->eTokenType = STRING;
 
             return ptrToken;
@@ -168,7 +168,7 @@ Token* Scanner::getNextToken()
             currtoken += currchar;
             index++;
 
-            ptrToken->sNextToken = currtoken;
+            ptrToken->sToken = currtoken;
             ptrToken->eTokenType = PUNCTUATION;
 
             return ptrToken;
@@ -182,7 +182,7 @@ Token* Scanner::getNextToken()
 
     }
 
-    ptrToken->sNextToken = "";
+    ptrToken->sToken = "";
     ptrToken->eTokenType = UNDEFINED;
 
     return ptrToken;
