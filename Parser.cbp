@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Parser" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/p1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Parser" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/p1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -42,14 +42,15 @@
 		<Unit filename="rpal_constants.h" />
 		<Unit filename="rpal_utils.cpp" />
 		<Unit filename="rpal_utils.h" />
+		<Unit filename="rpalstandardizer.cpp" />
+		<Unit filename="rpalstandardizer.h" />
 		<Unit filename="scanner.cpp" />
 		<Unit filename="scanner.h" />
-		<Unit filename="stack.cpp" />
 		<Unit filename="stack.h" />
 		<Extensions>
 			<code_completion />
-			<debugger />
 			<envvars />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
